@@ -9,10 +9,10 @@ const routes = [
         path: '/cart',
         component: () => import('@/views/Cart.vue')
     },
-    // {
-    //     path: '*',
-    //     component: () => import('@/views/NotFound.vue')
-    // },
+    {
+        path: '/:pathMatch(.*)*',
+        component: () => import('@/views/NotFound.vue')
+    },
 ]
 
 const router = createRouter({
