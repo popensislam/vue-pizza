@@ -34,13 +34,10 @@
         y2="20.366"
       />
     </svg>
-    <input
-      ref="{inputRef}"
-      class="root"
-      value="{value}"
-      onChange="{onChangeInput}"
-      placeholder="Поиск пиццы..."
-    />
+
+    <form @submit.prevent="submitSearch">
+      <input v-model="searchValue" class="root" placeholder="Поиск пиццы..." />
+    </form>
 
     <svg
       class="clearIcon"
@@ -60,6 +57,14 @@
 <script>
 export default {
   name: "search-pizza",
+  data: () => ({
+    searchValue: ''
+  }),
+  methods: {
+    submitSearch() {
+      this.$store.commit('setSearch', this.searchValue)
+    }
+  }
 };
 </script>
 

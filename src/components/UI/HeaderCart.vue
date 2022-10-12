@@ -1,7 +1,7 @@
 <template>
   <div class="header__cart">
     <router-link to="/cart" class="button button--cart">
-      <span>1000 ₽</span>
+      <span>{{ this.$store.getters.totalPrice }} ₽</span>
       <div class="button__delimiter"></div>
       <svg
         width="18"
@@ -32,7 +32,7 @@
           strokeLinejoin="round"
         />
       </svg>
-      <span>2</span>
+      <span>{{ this.$store.getters.totalPizzas }}</span>
     </router-link>
   </div>
 </template>

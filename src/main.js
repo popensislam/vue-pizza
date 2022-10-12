@@ -7,7 +7,6 @@ import components from '@/components/UI/index'
 const app = createApp(App)
 
 components.forEach((comp) => {
-    console.log(comp)
     app.component(comp.name, comp)
 })
 

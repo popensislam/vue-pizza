@@ -1,11 +1,14 @@
 <template>
   <div class="header">
-    <div
-      class="container"
-      
-    >
+    <div class="container">
       <div class="header__logo">
-        <img width="38" src="@/assets/img/pizza-logo.svg" alt="logos icon" />
+        <img
+          @click="this.$router.push('/')"
+          style="cursor: pointer"
+          width="38"
+          src="@/assets/img/pizza-logo.svg"
+          alt="logos icon"
+        />
         <div class="align-flex">
           <h1>React Pizza</h1>
           <p>самая вкусная пицца во вселенной</p>
@@ -22,4 +25,3 @@ export default {
   name: "main-header",
 };
 </script>
-
