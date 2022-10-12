@@ -12,13 +12,23 @@
       tag="div"
     >
       <PizzaBlock
-        v-for="pizza of sortPizzas"
+        v-for="pizza of searchPizzas.slice(0, lengthArr)"
         :key="pizza.id"
         :pizza="pizza"
       />
     </transition-group>
     <div class="content__items" v-if="this.$store.getters.loading">
-      Loading...
+      <SkeletonBlock />
+      <SkeletonBlock />
+      <SkeletonBlock />
+      <SkeletonBlock />
+    </div>
+    <div
+      v-if="!this.$store.getters.loading"
+      @click="lengthArr += 4"
+      style="cursor: pointer; text-align: center;"
+    >
+      <p v-if="lengthArr < searchPizzas.length" style='color: #fe5f1e; text-decoration: underline;'>Смотреть еще</p>
     </div>
   </div>
 </template>
@@ -27,6 +37,7 @@
 import Categories from "@/components/Categories.vue";
 import Sort from "@/components/Sort.vue";
 import PizzaBlock from "@/components/PizzaBlock.vue";
+import SkeletonBlock from "@/components/SkeletonBlock.vue";
 
 export default {
   name: "main-page",
@@ -34,10 +45,12 @@ export default {
     Categories,
     Sort,
     PizzaBlock,
+    SkeletonBlock,
   },
   data: () => ({
     activeCategory: 0,
     sortBy: "популярности",
+    lengthArr: 4,
   }),
   methods: {
     setActiveCat(i) {
@@ -63,25 +76,29 @@ export default {
     sortPizzas() {
       if (this.sortBy === "популярности") {
         return [...this.filterPizzas].sort((a, b) => {
-            return b.rating - a.rating
-        })
+          return b.rating - a.rating;
+        });
       } else if (this.sortBy === "цене") {
         return [...this.filterPizzas].sort((a, b) => {
-            return b.price - a.price 
+          return b.price - a.price;
         });
       } else {
         return [...this.filterPizzas].sort((a, b) => {
-            return a.title.localeCompare(b.title)
+          return a.title.localeCompare(b.title);
         });
       }
     },
     searchPizzas() {
-        if (this.$store.getters.search) {
-            return this.sortPizzas.filter(item => item.includes(this.$store.getters.search))
-        } else {
-            return this.sortPizzas
-        }
-    }
+      if (this.$store.getters.search) {
+        return this.sortPizzas.filter((item) =>
+          item.title
+            .toLowerCase()
+            .includes(this.$store.getters.search.toLowerCase())
+        );
+      } else {
+        return this.sortPizzas;
+      }
+    },
   },
 };
 </script>

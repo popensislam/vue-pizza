@@ -63,7 +63,6 @@ export default createStore({
             state.search = search
         },
         setCart(state, pizza) {
-
             const foundProduct = state.cart.find(item => item.id === pizza.id && item.size === pizza.size && item.type === pizza.type)
 
             if (foundProduct) {

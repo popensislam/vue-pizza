@@ -1,6 +1,7 @@
 <template>
   <div class="searchWrapper">
     <svg
+      @click="submitSearch"
       class="icon"
       enableBackground="new 0 0 32 32"
       id="Editable-line"
@@ -40,6 +41,7 @@
     </form>
 
     <svg
+      @click="setSearchValue"
       class="clearIcon"
       height="48"
       viewBox="0 0 48 48"
@@ -61,7 +63,12 @@ export default {
     searchValue: ''
   }),
   methods: {
+    setSearchValue() {
+      this.searchValue = ''
+      this.submitSearch()
+    },
     submitSearch() {
+      console.log(this.searchValue)
       this.$store.commit('setSearch', this.searchValue)
     }
   }
@@ -102,5 +109,11 @@ export default {
 }
 .clearIcon:hover {
   opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .root {
+    width: 100%
+  }
 }
 </style>

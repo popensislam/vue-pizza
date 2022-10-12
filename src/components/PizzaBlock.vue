@@ -1,9 +1,9 @@
 <template>
-  <div className="pizza-block-wrapper list-complete-item">
-    <div className="pizza-block">
-      <img className="pizza-block__image" :src="pizza.imageUrl" alt="Pizza" />
-      <h4 className="pizza-block__title">{{ pizza.title }}</h4>
-      <div className="pizza-block__selector">
+  <div class="pizza-block-wrapper list-complete-item">
+    <div class="pizza-block">
+      <img class="pizza-block__image" :src="pizza.imageUrl" alt="Pizza" />
+      <h4 class="pizza-block__title">{{ pizza.title }}</h4>
+      <div class="pizza-block__selector">
         <ul>
           <li
             @click="setActiveType(type)"
@@ -25,9 +25,9 @@
           </li>
         </ul>
       </div>
-      <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {{ pizza.price }} ₽</div>
-        <div className="button button--outline button--add" @click="addCart(pizza)">
+      <div class="pizza-block__bottom">
+        <div class="pizza-block__price">от {{ pizza.price }} ₽</div>
+        <div class="button button--outline button--add" @click="addCart(pizza)">
           <svg
             width="12"
             height="12"

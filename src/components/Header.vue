@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="container">
+    <div class="container flex-column">
       <div class="header__logo">
         <img
           @click="this.$router.push('/')"
@@ -25,3 +25,13 @@ export default {
   name: "main-header",
 };
 </script>
+
+<style scoped>
+@media (max-width: 800px) {
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+</style>
